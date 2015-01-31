@@ -1,6 +1,7 @@
 package com.bill.chapter.one;
 
 import com.bill.std.utils.StdDraw;
+import com.bill.std.utils.StdOut;
 
 /**
  * 这里包含了第一章的导言（介绍了一个求最大公约数的递归方法） 和第一节基础编程模型
@@ -13,16 +14,14 @@ public class BasicModel {
 
 	public static void main(String[] args) {
 
-		int N = 1000;
-		StdDraw.setXscale(0, N);
-		StdDraw.setYscale(0, N * N);
-		StdDraw.setPenRadius(0.01);
-		for (int i = 0; i < N; i++) {
-			StdDraw.point(i, i);
-			StdDraw.point(i, i * i);
-			StdDraw.point(i, i * Math.log(i));
-		}
+		//StdOut.println(Math.abs(-2147483648));// int 溢出
 
+		//StdOut.println(1 / 0); // 抛出被除数不能为0的异常
+		//StdOut.println(1 / 0.0); // Infinity
+
+		//fib(10);
+
+		//StdOut.printf("%.5f\n", sqrt(8)); //2.82847
 	}
 
 	/*
@@ -37,4 +36,39 @@ public class BasicModel {
 		}
 
 	}
+
+	/*
+	 * Ex 1.1.6
+	 * 斐波那契数列
+	 */
+	public static void fib(int length) {
+		int f = 0;
+		int g = 1;
+		for (int i = 0; i < length; i++) {
+			StdOut.println(f);
+			f = f + g;
+			g = f - g;
+		}
+
+	}
+
+	/*
+	 * Ex 1.1.7 a
+	 * 牛顿导出法开方
+	 * 
+	 * 由于
+	 */
+	public static double sqrt(double n) {
+		StdDraw.setPenRadius(.01);
+		StdDraw.setXscale(0, 10);
+		StdDraw.setYscale(0, 10);
+		double t = n;
+		int i = 0;
+		while (Math.abs(t - n / t) > .0001) { // 0.0001 精度  有些时候 精度要求越高 循环次数越多
+			StdDraw.point(i++, t);
+			t = (n / t + t) / 2.0; // 开2次方
+		}
+		return t;
+	}
+
 }
