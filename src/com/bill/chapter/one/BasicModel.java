@@ -12,7 +12,6 @@ public class BasicModel {
 	
 	public static void main(String[] args) {
 		
-		System.out.println(gdc(24, 32));	//8
 	}
 	
 	/*
